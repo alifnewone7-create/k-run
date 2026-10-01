@@ -68,3 +68,4 @@ User choices: nav hides on scroll-down / shows on scroll-up; keep dark+violet+li
 - New `/app/frontend/src/components/landing/AuraBackground.jsx` mounted in App.js above LandingPage; 4 fixed full-page layers (`.aura-bg` + `.aura-layer-1..4` in index.css).
 - body/html base colour now `#100e0b`; removed old body radial-mesh background-image. Layer 1 = violet linear gradient (alphas tempered to 0.34/0.46 for text contrast), layers 2-3 = screen-blend radial glows (blur 120px mobile / 260px desktop), layer 4 = screen-blend star dots.
 - Content kept above via `.App > *:not(.aura-bg) { z-index: 1 }`. Verified by screenshots at top/mid/footer — readable, no overflow.
+- REVERTED (same day, user request "ager background firiye anen"): Aura Deep Cosmos layers removed, AuraBackground.jsx deleted, old deep-indigo (#0B0A14) radial-mesh body background restored.
