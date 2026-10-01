@@ -14,8 +14,9 @@ export const Hero = () => {
 
   return (
     <section id="hero" data-testid="hero-section" className="relative pt-24 lg:pt-28 pb-20 lg:pb-24 overflow-hidden">
-      <motion.div style={IS_MOBILE ? undefined : { y: glowY }} className="pointer-events-none absolute inset-x-0 -top-40 h-[75vh]" aria-hidden>
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 45% at 50% 0%, rgba(255,255,255,0.06), rgba(5,5,6,0) 70%)" }} />
+      <motion.div style={IS_MOBILE ? undefined : { y: glowY }} className="pointer-events-none absolute inset-x-0 top-0 h-[90vh]" aria-hidden>
+        <div className="hero-spot" />
+        <div className="hero-beam" />
       </motion.div>
       <div className="violet-horizon" aria-hidden />
 

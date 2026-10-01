@@ -39,7 +39,7 @@ const Phone = () => (
 );
 
 export const Benefits = () => (
-  <section id="benefits" data-testid="benefits-section" className="relative section-y overflow-hidden">
+  <section id="benefits" data-testid="benefits-section" className="relative section-y overflow-hidden band-deep">
     <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
       <SectionHead align="center" icon={Video} eyebrow="Live with KM Nishat" title="Your Benefits" body="Learn live with KM Nishat through real sessions, real lessons and real guidance." />
       <Reveal delay={0.1} className="mt-16 lg:mt-20"><Phone /></Reveal>

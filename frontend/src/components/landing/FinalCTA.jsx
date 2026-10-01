@@ -13,8 +13,8 @@ export const FinalCTA = () => (
     <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
       <Reveal>
         <div className="relative overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-[#D4D4DE]/12 px-5 py-16 sm:px-16 lg:py-28 text-center backdrop-blur-xl">
-          <div className="absolute inset-0" style={{ background: "linear-gradient(165deg, rgba(212,212,222,0.07), rgba(139,92,246,0.04) 55%, rgba(5,5,6,0))" }} aria-hidden />
-          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 112%, rgba(139,92,246,0.26), rgba(5,5,6,0) 70%)" }} aria-hidden />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(165deg, rgba(212,212,222,0.07), rgba(139,92,246,0.04) 55%, transparent)" }} aria-hidden />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 60% 80% at 50% 112%, rgba(139,92,246,0.26), transparent 70%)" }} aria-hidden />
           <div className="absolute inset-0 grid-lines mask-fade-y opacity-50" aria-hidden />
           <div className="relative">
             <span className="chip mx-auto mb-6"><span className="live-dot" /><span className="uppercase tracking-[0.18em]">Final step</span></span>

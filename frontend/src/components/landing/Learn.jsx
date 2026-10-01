@@ -35,7 +35,7 @@ const TelegramArt = () => (
 );
 
 export const Learn = () => (
-  <section id="learn" data-testid="learn-section" className="relative section-y">
+  <section id="learn" data-testid="learn-section" className="relative section-y band">
     <div className="pointer-events-none absolute inset-0 grid-dots mask-fade-y opacity-35" aria-hidden />
     <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
       <SectionHead icon={GraduationCap} eyebrow="What you'll learn" title="A complete system that takes you from reading the chart to protecting your account." body="Every lesson inside the Telegram channel is built around one goal: making you a consistent, disciplined trader." />

@@ -11,7 +11,7 @@ export const Results = () => {
   const d = pts.map(([x, y], i) => `${i ? "L" : "M"}${x} ${y}`).join(" ");
 
   return (
-    <section id="results" data-testid="results-section" className="relative section-y overflow-hidden">
+    <section id="results" data-testid="results-section" className="relative section-y overflow-hidden band-deep">
       <div className="glow-orb -right-40 top-0 h-[600px] w-[600px] bg-[#7C3AED]/[0.07]" aria-hidden />
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHead icon={TrendingUp} eyebrow="Results · Verified inside Telegram" title="Real trades. Real numbers. Losses included." body="We post every trade, both wins and losses, along with the reasoning behind it. Consistency comes from the process, not from hiding the red." />

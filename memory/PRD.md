@@ -69,3 +69,10 @@ User choices: nav hides on scroll-down / shows on scroll-up; keep dark+violet+li
 - body/html base colour now `#100e0b`; removed old body radial-mesh background-image. Layer 1 = violet linear gradient (alphas tempered to 0.34/0.46 for text contrast), layers 2-3 = screen-blend radial glows (blur 120px mobile / 260px desktop), layer 4 = screen-blend star dots.
 - Content kept above via `.App > *:not(.aura-bg) { z-index: 1 }`. Verified by screenshots at top/mid/footer — readable, no overflow.
 - REVERTED (same day, user request "ager background firiye anen"): Aura Deep Cosmos layers removed, AuraBackground.jsx deleted, old deep-indigo (#0B0A14) radial-mesh body background restored.
+
+## 2026-06 — Professional colour grading refresh (violet + lime kept, cinematic)
+- Body bg: single top violet spotlight + soft bottom glow + smooth vertical gradient (#100D1F → #080710); removed blotchy lime/side patches. `body::before` vignette (desktop only).
+- Hero: new `.hero-spot` (white core + violet halo) + `.hero-beam` light cone (desktop only); `violet-horizon` toned down.
+- Section depth: `.band` (Learn, Testimonials = lifted violet tint) / `.band-deep` (Benefits, Results = slightly darker) for scroll rhythm.
+- Dividers/hairlines violet-tinted with lime glowing centre dot; glass slightly brighter top highlight; nav bar indigo-tinted; btn-ice gets lavender ring + stronger glow.
+- Verified via screenshots at 1920 and 390 (hero, learn, testimonials, benefits).

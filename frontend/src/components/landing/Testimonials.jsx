@@ -3,8 +3,8 @@ import { TESTIMONIALS } from "@/lib/site";
 import { Reveal, SectionHead } from "./Reveal";
 
 export const Testimonials = () => (
-  <section id="testimonials" data-testid="testimonials-section" className="relative section-y">
-    <div className="glow-orb left-1/4 top-1/4 h-[420px] w-[420px] bg-[#D4D4DE]/[0.05]" aria-hidden />
+  <section id="testimonials" data-testid="testimonials-section" className="relative section-y band">
+    <div className="glow-orb left-1/4 top-1/4 h-[420px] w-[420px] bg-[#8B5CF6]/[0.07]" aria-hidden />
     <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
       <SectionHead icon={Users} eyebrow="Community" title="See it from traders like you." body="Members from Bangladesh and beyond who chose process over gambling." />
       <div className="mt-14 columns-1 md:columns-2 lg:columns-3 gap-3.5 [column-fill:_balance]">
