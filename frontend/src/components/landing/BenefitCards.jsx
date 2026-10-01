@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Video, BookOpenCheck, Compass, ShieldCheck, Brain, Radio, GraduationCap, Target, Wallet, Sparkles } from "lucide-react";
+import { Video, Presentation, ListChecks, ShieldCheck, Brain, Radio, GraduationCap, Target, Wallet, Sparkles, BarChart3, CandlestickChart, Check } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
 const spring = { type: "spring", stiffness: 400, damping: 40, mass: 1 };
@@ -44,39 +44,41 @@ const SessionCard = () => (
   </Card>
 );
 
-const CANDLES = [[18, 80, 64, 86, 58], [46, 66, 74, 80, 60], [74, 72, 52, 76, 46], [102, 54, 40, 58, 34], [130, 42, 52, 58, 38], [158, 50, 30, 54, 24], [186, 32, 18, 36, 12], [214, 20, 8, 24, 4]];
+const MODULES = [{ Icon: BarChart3, name: "Basics", pct: 100 }, { Icon: CandlestickChart, name: "Price Action", pct: 80 }, { Icon: Brain, name: "Psychology", pct: 55 }];
 const LessonCard = () => (
-  <Card tone="teal" icon={BookOpenCheck} title="Lesson" chip={GraduationCap} chipText="Beginner friendly" caption="Price action · Risk · Psychology">
-    <div className="text-center"><Stat value="A → Z" label="Structured curriculum" className="text-6xl" /></div>
-    <svg viewBox="0 0 232 90" className="mt-5 w-full max-w-[250px]" data-testid="lesson-candles">
-      <motion.path d="M18 64 L46 74 L74 52 L102 40 L130 52 L158 30 L186 18 L214 8" fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="3 4"
-        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.9, ease }} />
-      {CANDLES.map(([x, o, c, h, l], k) => {
-        const up = c < o;
-        return (
-          <motion.g key={k} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 + k * 0.1, ease }}>
-            <line x1={x} x2={x} y1={h} y2={l} stroke={up ? "#A7F3D0" : "#FDA4AF"} strokeWidth="1.4" />
-            <rect x={x - 7} y={Math.min(o, c)} width="14" height={Math.max(Math.abs(o - c), 2)} rx="2" fill={up ? "#6EE7B7" : "#FB7185"} />
-          </motion.g>
-        );
-      })}
-    </svg>
+  <Card tone="teal" icon={Presentation} title="Lesson" chip={GraduationCap} chipText="Beginner friendly" caption="Price action · Risk · Psychology">
+    <div className="text-center"><Stat value="0 → PRO" label="Step-by-step modules" className="text-5xl" /></div>
+    <div className="mt-6 grid grid-cols-3 gap-2 w-full max-w-[260px]" data-testid="lesson-modules">
+      {MODULES.map(({ Icon, name, pct }, k) => (
+        <motion.div key={name} className="rounded-xl border border-white/15 bg-white/10 p-2.5 backdrop-blur-sm"
+          initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 + k * 0.12, ease }}>
+          <span className="grid h-7 w-7 place-items-center rounded-lg bg-white/15"><Icon size={14} /></span>
+          <p className="mt-2 text-[10px] font-semibold leading-tight text-white">{name}</p>
+          <div className="mt-2 h-1 rounded-full bg-white/15">
+            <motion.div className="h-full rounded-full bg-gradient-to-r from-white to-[#6EE7B7]"
+              initial={{ width: 0 }} whileInView={{ width: `${pct}%` }} viewport={{ once: true }} transition={{ duration: 1.1, delay: 0.5 + k * 0.15, ease }} />
+          </div>
+        </motion.div>
+      ))}
+    </div>
   </Card>
 );
 
+const RULES = ["Wait for confirmation", "Stop loss before entry", "Max 2 trades a day"];
 const GuidelineCard = () => (
-  <Card tone="blue" icon={Compass} title="Guideline" chip={Target} chipText="Discipline" caption="Risk 1% · Follow the plan">
-    <div className="text-center"><Stat value="1:3 RR" label="Minimum risk : reward" className="text-6xl" /></div>
-    <div className="relative mt-6 w-full max-w-[250px] h-24 flex flex-col rounded-xl overflow-hidden border border-white/20" data-testid="guideline-rr-box">
-      <motion.div className="flex-[3] flex items-start justify-end px-2.5 pt-1.5 bg-gradient-to-b from-emerald-300/45 to-emerald-400/15 text-[10px] font-semibold text-emerald-50"
-        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }}>TP +3R</motion.div>
-      <div className="relative h-[2px] bg-white"><span className="absolute right-2 -top-[7px] rounded bg-white px-1.5 text-[9px] font-bold text-[#0B3F9E]">ENTRY</span></div>
-      <motion.div className="flex-1 flex items-end justify-end px-2.5 pb-1 bg-gradient-to-b from-rose-400/15 to-rose-400/45 text-[10px] font-semibold text-rose-50"
-        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.5 }}>SL −1R</motion.div>
-      <svg viewBox="0 0 250 96" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none">
-        <motion.path d="M6 72 L40 78 L70 66 L100 74 L130 50 L160 56 L190 30 L222 8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
-          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.6, ease }} />
-      </svg>
+  <Card tone="blue" icon={ListChecks} title="Guideline" chip={Target} chipText="Discipline" caption="Plan · Patience · Process">
+    <div className="text-center"><Stat value="No FOMO" label="Rules over emotions" className="text-5xl" /></div>
+    <div className="mt-6 w-full max-w-[250px] space-y-2" data-testid="guideline-rules">
+      {RULES.map((r, k) => (
+        <motion.div key={r} className="flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-sm"
+          initial={{ opacity: 0, x: -14 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 + k * 0.15, ease }}>
+          <motion.span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white text-[#0B3F9E]"
+            initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 500, damping: 18, delay: 0.5 + k * 0.15 }}>
+            <Check size={12} strokeWidth={3} />
+          </motion.span>
+          <span className="text-[11px] font-medium text-white">{r}</span>
+        </motion.div>
+      ))}
     </div>
   </Card>
 );
