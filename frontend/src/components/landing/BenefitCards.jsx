@@ -183,7 +183,7 @@ export const BenefitCards = () => {
 
   return (
     <motion.div ref={ref} data-testid="benefits-strip" onMouseMove={onMove} onMouseLeave={() => { setHovered(null); rest(); }}
-      className="relative mx-auto mt-14 lg:mt-20 max-w-5xl min-h-[360px] sm:min-h-[560px] lg:min-h-[640px] overflow-hidden flex flex-col items-start sm:items-center justify-center"
+      className="relative mx-auto mt-14 lg:mt-20 max-w-5xl min-h-[280px] sm:min-h-[560px] lg:min-h-[640px] overflow-hidden flex flex-col items-start sm:items-center justify-center"
       initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.9, ease }}>
       <div className="relative z-[1] flex flex-col items-start sm:items-center gap-4 sm:gap-7">
         {ITEMS.map((item, i) => (

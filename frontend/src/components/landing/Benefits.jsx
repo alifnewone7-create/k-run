@@ -44,9 +44,9 @@ export const Benefits = () => (
       <SectionHead align="center" icon={Video} eyebrow="Live with KM Nishat" title="Your Benefits" body="Learn live with KM Nishat through real sessions, real lessons and real guidance." />
       <Reveal delay={0.1} className="mt-16 lg:mt-20"><Phone /></Reveal>
       <BenefitCards />
-      <Reveal delay={0.2} className="mt-16 sm:mt-12 flex justify-center">
-        <div className="relative flex justify-center w-full sm:w-auto">
-          <ClickArrow variant="down" testId="benefits-click-arrow-mobile" className="sm:hidden left-4 -top-[46px] h-12 w-24" />
+      <Reveal delay={0.2} className="mt-8 sm:mt-12 flex justify-center">
+        <div className="relative mb-12 sm:mb-0 flex justify-center w-full sm:w-auto">
+          <ClickArrow variant="down" testId="benefits-click-arrow-mobile" className="sm:hidden left-4 -bottom-[50px] h-12 w-24 -scale-y-100" />
           <ClickArrow testId="benefits-click-arrow" className="hidden sm:block right-full mr-3 top-1/2 -mt-[31px] h-14 w-28" />
           <TelegramButton testId="benefits-telegram-cta" className="w-full sm:w-auto text-base px-7 py-4">Join Free Telegram Channel</TelegramButton>
         </div>
