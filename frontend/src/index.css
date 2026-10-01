@@ -347,16 +347,14 @@ body {
 }
 .btn-ice:active { transform: translateY(0) scale(0.985); }
 @keyframes btn-shake {
-    0%, 76%, 100% { transform: translateX(0) rotate(0); }
-    79% { transform: translateX(-5px) rotate(-2deg); }
-    82% { transform: translateX(5px) rotate(2deg); }
-    85% { transform: translateX(-4px) rotate(-1.5deg); }
-    88% { transform: translateX(4px) rotate(1.5deg); }
-    91% { transform: translateX(-2px) rotate(-0.5deg); }
-    94% { transform: translateX(2px) rotate(0.5deg); }
+    0%, 26%, 44%, 100% { transform: translateX(0) rotate(0); }
+    29% { transform: translateX(-5px) rotate(-2deg); }
+    32% { transform: translateX(5px) rotate(2deg); }
+    35% { transform: translateX(-4px) rotate(-1.5deg); }
+    38% { transform: translateX(4px) rotate(1.5deg); }
+    41% { transform: translateX(-2px) rotate(-0.5deg); }
 }
-.btn-shake { animation: btn-shake 3s ease-in-out infinite; }
-.btn-shake:hover { animation-play-state: paused; }
+.btn-shake { animation: btn-shake 4.3s ease-in-out 1.3s infinite; }
 
 .btn-lime {
     display: inline-flex;

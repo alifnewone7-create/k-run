@@ -39,7 +39,7 @@ export const Hero = () => {
             className="relative mt-16 sm:mt-10 flex justify-center w-full sm:w-auto">
             <ClickArrow variant="down" testId="hero-click-arrow-mobile" className="sm:hidden left-4 -top-[46px] h-12 w-24" />
             <ClickArrow className="hidden sm:block right-full mr-3 top-1/2 -mt-[31px] h-14 w-28" />
-            <TelegramButton testId="hero-telegram-btn" className="sm:!w-auto">Join Free Telegram Channel</TelegramButton>
+            <TelegramButton testId="hero-telegram-btn" className="btn-shake sm:!w-auto">Join Free Telegram Channel</TelegramButton>
           </motion.div>
         </div>
 
