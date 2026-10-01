@@ -195,6 +195,12 @@ body::after {
         inset 0 0 0 1px rgba(255,255,255,0.1),
         0 56px 100px -40px var(--w-shadow);
 }
+@media (max-width: 639px) {
+    .wcard { transition: none; box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.06); }
+    .wcard::before { display: none; }
+    .wcard-grid { display: none; }
+    [data-testid="benefit-preview"] { box-shadow: 0 20px 40px -24px rgba(0,0,0,0.8); }
+}
 .wcard-violet { --w-hi: #B07CFF; --w-mid: #5B21B6; --w-deep: #2A0F5C; --w-glow: #8B5CF6; --w-shadow: rgba(139,92,246,0.7); }
 .wcard-teal   { --w-hi: #34D399; --w-mid: #0F6B5A; --w-deep: #052E2A; --w-glow: #10B981; --w-shadow: rgba(16,185,129,0.55); }
 .wcard-blue   { --w-hi: #1E6FFF; --w-mid: #0B3F9E; --w-deep: #04143A; --w-glow: #60A5FA; --w-shadow: rgba(59,130,246,0.6); }

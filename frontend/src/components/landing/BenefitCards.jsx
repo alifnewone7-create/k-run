@@ -4,6 +4,7 @@ import { Video, Presentation, ListChecks, ShieldCheck, Brain, Radio, GraduationC
 
 const ease = [0.22, 1, 0.36, 1];
 const spring = { type: "spring", stiffness: 400, damping: 40, mass: 1 };
+const slide = { duration: 0.65, ease };
 const STARS = [[12, 18], [28, 62], [70, 22], [86, 48], [58, 80], [40, 36], [78, 74], [18, 84]];
 
 const Card = ({ tone, icon: Icon, title, chip: ChipIcon, chipText, caption, children }) => (
@@ -50,7 +51,7 @@ const LessonCard = () => (
     <div className="text-center"><Stat value="0 → PRO" label="Step-by-step modules" className="text-5xl" /></div>
     <div className="mt-6 grid grid-cols-3 gap-2 w-full max-w-[260px]" data-testid="lesson-modules">
       {MODULES.map(({ Icon, name, pct }, k) => (
-        <motion.div key={name} className="rounded-xl border border-white/15 bg-white/10 p-2.5 backdrop-blur-sm"
+        <motion.div key={name} className="rounded-xl border border-white/15 bg-white/10 p-2.5 sm:backdrop-blur-sm"
           initial={{ opacity: 0, y: 12 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 + k * 0.12, ease }}>
           <span className="grid h-7 w-7 place-items-center rounded-lg bg-white/15"><Icon size={14} /></span>
           <p className="mt-2 text-[10px] font-semibold leading-tight text-white">{name}</p>
@@ -70,7 +71,7 @@ const GuidelineCard = () => (
     <div className="text-center"><Stat value="No FOMO" label="Rules over emotions" className="text-5xl" /></div>
     <div className="mt-6 w-full max-w-[250px] space-y-2" data-testid="guideline-rules">
       {RULES.map((r, k) => (
-        <motion.div key={r} className="flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-sm"
+        <motion.div key={r} className="flex items-center gap-2.5 rounded-xl border border-white/15 bg-white/10 px-3 py-2 sm:backdrop-blur-sm"
           initial={{ opacity: 0, x: -14 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 + k * 0.15, ease }}>
           <motion.span className="grid h-5 w-5 shrink-0 place-items-center rounded-full bg-white text-[#0B3F9E]"
             initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ type: "spring", stiffness: 500, damping: 18, delay: 0.5 + k * 0.15 }}>
@@ -132,8 +133,8 @@ const canHover = () => typeof window !== "undefined" && window.innerWidth >= 640
 const NameRow = ({ item, i, active, dim, onEnter, onSelect }) => (
   <button type="button" data-testid={`benefit-name-${i}`} aria-pressed={active} onMouseEnter={onEnter} onClick={onSelect}
     className="block overflow-hidden outline-none">
-    <motion.span className="relative block font-display text-[2rem] sm:text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-none whitespace-pre"
-      animate={{ y: active ? "-100%" : "0%" }} transition={spring}>
+    <motion.span className="relative block font-display text-[2rem] sm:text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-none whitespace-pre will-change-transform"
+      animate={{ y: active ? "-100%" : "0%" }} transition={slide}>
       <span className="block transition-colors duration-300" style={{ color: dim ? "#51565A" : "#FFFFFF" }}>{item.name}</span>
       <span aria-hidden className="block absolute top-full left-0 w-full text-white">{item.name}</span>
     </motion.span>
@@ -191,15 +192,19 @@ export const BenefitCards = () => {
             onEnter={() => canHover() && setHovered(i)} onSelect={() => { setSelected(i); setHovered(null); }} />
         ))}
       </div>
-      <motion.div data-testid="benefit-preview" className="pointer-events-none absolute top-0 left-0 z-[2] rounded-[1.6rem] overflow-hidden shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)]"
+      <motion.div data-testid="benefit-preview" className="pointer-events-none absolute top-0 left-0 z-[2] rounded-[1.6rem] overflow-hidden shadow-[0_40px_90px_-30px_rgba(0,0,0,0.9)] will-change-transform"
         style={{ x, y, translateX: "-50%", translateY: "-50%", width: CARD_W * scale, height: CARD_H * scale }}>
-        <div style={{ width: CARD_W, height: CARD_H, transform: `scale(${scale})`, transformOrigin: "top left" }}>
-          {ITEMS.map(({ Comp }, i) => (
-            <motion.div key={i} data-testid={`benefit-item-${i}`} className="absolute inset-0" initial={false}
-              animate={{ y: i < current ? "-100%" : i > current ? "100%" : "0%" }} transition={spring}>
-              <Comp />
-            </motion.div>
-          ))}
+        <div style={{ width: CARD_W, height: CARD_H, transform: `scale(${scale}) translateZ(0)`, transformOrigin: "top left" }}>
+          {ITEMS.map(({ Comp }, i) => {
+            const near = Math.abs(i - current) <= 1 || Math.abs(i - current) === ITEMS.length - 1;
+            return (
+              <motion.div key={i} data-testid={`benefit-item-${i}`} className="absolute inset-0 will-change-transform" initial={false}
+                style={{ visibility: near ? "visible" : "hidden" }}
+                animate={{ y: i < current ? "-100%" : i > current ? "100%" : "0%" }} transition={slide}>
+                {near && <Comp />}
+              </motion.div>
+            );
+          })}
         </div>
       </motion.div>
     </motion.div>
