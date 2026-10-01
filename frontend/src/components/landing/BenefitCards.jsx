@@ -1,44 +1,51 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { Headphones, GraduationCap, Compass } from "lucide-react";
+import { Video, BookOpenCheck, Compass, ShieldCheck, Brain, Radio, GraduationCap, Target, Wallet, Sparkles } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
 const spring = { type: "spring", stiffness: 400, damping: 40, mass: 1 };
 const STARS = [[12, 18], [28, 62], [70, 22], [86, 48], [58, 80], [40, 36], [78, 74], [18, 84]];
 
-const Card = ({ tone, icon: Icon, kicker, title, chip, caption, children }) => (
+const Card = ({ tone, icon: Icon, title, chip: ChipIcon, chipText, caption, children }) => (
   <div className={`wcard wcard-${tone} h-full w-full flex flex-col p-6 sm:p-7`}>
+    <span className="wcard-grid" aria-hidden />
     <div className="flex items-start justify-between">
-      <div>
-        <p className="text-[15px] font-medium text-white/85 leading-tight">{kicker}</p>
-        <p className="text-[15px] font-semibold text-white leading-tight">{title}</p>
-      </div>
-      <span className="wcard-chip"><Icon size={11} strokeWidth={2} />{chip}</span>
+      <span className="wcard-icon"><Icon size={22} strokeWidth={1.8} /></span>
+      <span className="wcard-chip"><ChipIcon size={11} strokeWidth={2.2} />{chipText}</span>
     </div>
-    <div className="flex-1 flex flex-col items-center justify-center py-4">{children}</div>
-    <p className="text-[13px] sm:text-sm text-white/85 pr-16">{caption}</p>
+    <div className="mt-4">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">Live</p>
+      <p className="text-[22px] font-semibold text-white leading-tight tracking-[-0.02em]">{title}</p>
+    </div>
+    <div className="relative flex-1 flex flex-col items-center justify-center py-3">{children}</div>
+    <div className="wcard-foot"><p className="text-[13px] text-white/85 pr-16">{caption}</p></div>
     <span className="wcard-mark" aria-hidden>KM NISHAT</span>
   </div>
 );
 
+const Stat = ({ value, label, className = "text-6xl" }) => (
+  <>
+    <p className={`wcard-num ${className}`}>{value}</p>
+    <p className="mt-2 text-[10px] uppercase tracking-[0.22em] text-white/60">{label}</p>
+  </>
+);
+
 const SessionCard = () => (
-  <Card tone="violet" icon={Headphones} kicker="Live Call" title="Session" chip="Live" caption="Real trades · Real time">
+  <Card tone="violet" icon={Video} title="Session" chip={Radio} chipText="On air" caption="Real trades · Real time">
     {STARS.map(([x, y], k) => <span key={k} className="w-star" style={{ left: `${x}%`, top: `${y}%`, animationDelay: `${k * 0.4}s` }} />)}
     <div className="relative">
       <span className="w-ring" /><span className="w-ring d2" />
-      <div className="w-orb" />
+      <div className="w-orb !w-24 !h-24" />
     </div>
-    <p className="wcard-num mt-8 text-6xl sm:text-[64px]">12.5k<span className="text-3xl align-top">+</span></p>
-    <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">Traders learning live</p>
+    <div className="mt-6 text-center"><Stat value="12.5k+" label="Traders learning live" className="text-5xl" /></div>
   </Card>
 );
 
 const WAVES = ["M0 50 C 40 20, 70 20, 110 50 S 180 80, 220 50 S 290 20, 320 50", "M0 60 C 45 40, 75 40, 115 60 S 185 85, 225 60 S 295 40, 320 60", "M0 42 C 50 70, 80 70, 120 42 S 190 10, 230 42 S 300 70, 320 42"];
 const LessonCard = () => (
-  <Card tone="teal" icon={GraduationCap} kicker="Live Call" title="Lesson" chip="Beginner friendly" caption="Price action · Risk · Psychology">
-    <p className="wcard-num text-7xl sm:text-[84px]">A<span className="text-4xl sm:text-5xl mx-1">→</span>Z</p>
-    <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">Structured curriculum</p>
-    <svg viewBox="0 0 320 90" className="mt-8 w-full max-w-[280px]" fill="none" strokeLinecap="round">
+  <Card tone="teal" icon={BookOpenCheck} title="Lesson" chip={GraduationCap} chipText="Beginner friendly" caption="Price action · Risk · Psychology">
+    <div className="text-center"><Stat value="A → Z" label="Structured curriculum" className="text-6xl" /></div>
+    <svg viewBox="0 0 320 90" className="mt-6 w-full max-w-[260px]" fill="none" strokeLinecap="round">
       {WAVES.map((d, k) => (
         <motion.path key={k} d={d} stroke="#fff" strokeOpacity={0.85 - k * 0.3} strokeWidth={k === 0 ? 2 : 1.4}
           initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3 + k * 0.2, ease }} />
@@ -49,12 +56,11 @@ const LessonCard = () => (
 
 const BARS = [28, 46, 40, 92, 62, 34, 24];
 const GuidelineCard = () => (
-  <Card tone="blue" icon={Compass} kicker="Live Call" title="Guideline" chip="Discipline" caption="Risk 1% · Follow the plan">
-    <p className="wcard-num text-7xl sm:text-[84px]">1:3<span className="text-2xl sm:text-3xl align-top ml-1">RR</span></p>
-    <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">Minimum risk : reward</p>
-    <div className="mt-8 grid grid-cols-7 gap-2 w-full max-w-[260px] items-end h-24">
+  <Card tone="blue" icon={Compass} title="Guideline" chip={Target} chipText="Discipline" caption="Risk 1% · Follow the plan">
+    <div className="text-center"><Stat value="1:3 RR" label="Minimum risk : reward" className="text-6xl" /></div>
+    <div className="mt-6 grid grid-cols-7 gap-2 w-full max-w-[240px] items-end h-20">
       {BARS.map((h, k) => (
-        <div key={k} className="flex flex-col items-center gap-2 h-full justify-end">
+        <div key={k} className="flex flex-col items-center gap-1.5 h-full justify-end">
           <motion.div className={`w-bar ${k === 3 ? "on" : ""}`} style={{ height: `${h}%` }}
             initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 + k * 0.08, ease }} />
           <span className={`text-[10px] ${k === 3 ? "text-white" : "text-white/45"}`}>{"MTWTFSS"[k]}</span>
@@ -64,10 +70,46 @@ const GuidelineCard = () => (
   </Card>
 );
 
+const RING = 2 * Math.PI * 44;
+const ManagementCard = () => (
+  <Card tone="rose" icon={ShieldCheck} title="Management" chip={Wallet} chipText="Capital safe" caption="Position size · Stop loss · Drawdown">
+    <div className="relative grid place-items-center h-36 w-36">
+      <svg viewBox="0 0 100 100" className="absolute inset-0 -rotate-90">
+        <circle cx="50" cy="50" r="44" stroke="rgba(255,255,255,0.12)" strokeWidth="6" fill="none" />
+        <motion.circle cx="50" cy="50" r="44" stroke="url(#w-rose)" strokeWidth="6" strokeLinecap="round" fill="none" strokeDasharray={RING}
+          initial={{ strokeDashoffset: RING }} whileInView={{ strokeDashoffset: RING * 0.18 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3, ease }} />
+        <defs><linearGradient id="w-rose" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#FFE4E6" /><stop offset="100%" stopColor="#FB7185" /></linearGradient></defs>
+      </svg>
+      <div className="text-center"><p className="wcard-num text-4xl">82%</p><p className="text-[9px] uppercase tracking-[0.2em] text-white/60 mt-1">Capital kept</p></div>
+    </div>
+    <div className="mt-5 flex gap-2">
+      {["1% risk", "SL first", "No revenge"].map((t) => <span key={t} className="wcard-tag">{t}</span>)}
+    </div>
+  </Card>
+);
+
+const STEPS = ["Basics", "Strategy", "Mindset", "Mastery"];
+const LearningCard = () => (
+  <Card tone="orange" icon={Brain} title="Learning" chip={Sparkles} chipText="Every day" caption="Q&A · Chart review · Growth">
+    <div className="text-center"><Stat value="24/7" label="Community learning" className="text-6xl" /></div>
+    <div className="mt-7 w-full max-w-[250px]">
+      <div className="relative h-1.5 rounded-full bg-white/15">
+        <motion.div className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-white to-[#FDBA74]"
+          initial={{ width: 0 }} whileInView={{ width: "75%" }} viewport={{ once: true }} transition={{ duration: 1.4, delay: 0.3, ease }} />
+      </div>
+      <div className="mt-3 flex justify-between">
+        {STEPS.map((s, k) => <span key={s} className={`text-[10px] ${k < 3 ? "text-white" : "text-white/45"}`}>{s}</span>)}
+      </div>
+    </div>
+  </Card>
+);
+
 const ITEMS = [
   { name: "LIVE SESSION", Comp: SessionCard },
   { name: "LIVE LESSON", Comp: LessonCard },
   { name: "LIVE GUIDELINE", Comp: GuidelineCard },
+  { name: "LIVE MANAGEMENT", Comp: ManagementCard },
+  { name: "LIVE LEARNING", Comp: LearningCard },
 ];
 
 const CARD_W = 340;
@@ -121,13 +163,14 @@ export const BenefitCards = () => {
   const onMove = (e) => {
     if (!canHover()) return;
     const r = ref.current.getBoundingClientRect();
+    const half = (CARD_H * scale) / 2 + 8;
     rawX.set(e.clientX - r.left + 200);
-    rawY.set(e.clientY - r.top);
+    rawY.set(Math.min(Math.max(e.clientY - r.top, half), r.height - half));
   };
 
   return (
     <motion.div ref={ref} data-testid="benefits-strip" onMouseMove={onMove} onMouseLeave={() => { setHovered(null); rest(); }}
-      className="relative mx-auto mt-14 lg:mt-20 max-w-5xl min-h-[320px] sm:min-h-[480px] lg:min-h-[520px] overflow-hidden flex flex-col items-start sm:items-center justify-center"
+      className="relative mx-auto mt-14 lg:mt-20 max-w-5xl min-h-[360px] sm:min-h-[560px] lg:min-h-[640px] overflow-hidden flex flex-col items-start sm:items-center justify-center"
       initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.9, ease }}>
       <div className="relative z-[1] flex flex-col items-start sm:items-center gap-4 sm:gap-7">
         {ITEMS.map((item, i) => (

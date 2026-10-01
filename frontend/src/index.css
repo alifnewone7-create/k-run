@@ -184,6 +184,41 @@ body {
 .wcard-violet { --w-hi: #B07CFF; --w-mid: #5B21B6; --w-deep: #2A0F5C; --w-glow: #8B5CF6; --w-shadow: rgba(139,92,246,0.7); }
 .wcard-teal   { --w-hi: #34D399; --w-mid: #0F6B5A; --w-deep: #052E2A; --w-glow: #10B981; --w-shadow: rgba(16,185,129,0.55); }
 .wcard-blue   { --w-hi: #1E6FFF; --w-mid: #0B3F9E; --w-deep: #04143A; --w-glow: #60A5FA; --w-shadow: rgba(59,130,246,0.6); }
+.wcard-rose   { --w-hi: #FB7185; --w-mid: #9F1239; --w-deep: #3B0618; --w-glow: #F43F5E; --w-shadow: rgba(244,63,94,0.55); }
+.wcard-orange { --w-hi: #FB923C; --w-mid: #9A3412; --w-deep: #3A1204; --w-glow: #F97316; --w-shadow: rgba(249,115,22,0.55); }
+
+.wcard-grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.35;
+    background-image: linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: radial-gradient(80% 60% at 50% 50%, #000 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(80% 60% at 50% 50%, #000 20%, transparent 80%);
+}
+.wcard-icon {
+    display: grid;
+    place-items: center;
+    width: 2.9rem;
+    height: 2.9rem;
+    border-radius: 0.95rem;
+    color: #fff;
+    background: linear-gradient(145deg, rgba(255,255,255,0.28), rgba(255,255,255,0.06));
+    border: 1px solid rgba(255,255,255,0.25);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), 0 10px 30px -8px var(--w-glow);
+    backdrop-filter: blur(10px);
+}
+.wcard-foot { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 0.85rem; }
+.wcard-tag {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    color: rgba(255,255,255,0.92);
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.18);
+}
 
 .wcard-num {
     font-family: "Geist", var(--font-display, inherit);
@@ -199,6 +234,8 @@ body {
 .wcard-violet .wcard-num { --w-num: #D9B8FF; }
 .wcard-teal .wcard-num { --w-num: #9AF5D8; }
 .wcard-blue .wcard-num { --w-num: #8EC5FF; }
+.wcard-rose .wcard-num { --w-num: #FECDD3; }
+.wcard-orange .wcard-num { --w-num: #FED7AA; }
 
 .wcard-chip {
     display: inline-flex;
