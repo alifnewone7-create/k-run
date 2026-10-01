@@ -119,7 +119,7 @@ export const Nav = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease }}
             data-testid="nav-mobile-menu"
-            className="lg:hidden mx-3 mt-2 rounded-3xl border border-[#D4D4DE]/12 bg-[#09090C]/95 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] overflow-hidden"
+            className="lg:hidden mx-3 mt-2 rounded-3xl border border-[#D4D4DE]/12 bg-[#100E1C]/95 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] overflow-hidden"
           >
             <div className="p-3">
               {NAV_LINKS.map((l, i) => (

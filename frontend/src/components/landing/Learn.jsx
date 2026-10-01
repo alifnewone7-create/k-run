@@ -21,7 +21,7 @@ const ChartArt = () => (
     <path d="M0 130 L40 118 L80 124 L120 96 L160 104 L200 70 L240 84 L280 48 L320 60 L360 30 L400 36 L400 160 L0 160Z" fill="url(#fill)" />
     <path d="M0 130 L40 118 L80 124 L120 96 L160 104 L200 70 L240 84 L280 48 L320 60 L360 30 L400 36" fill="none" stroke="url(#stroke)" strokeWidth="2.2" strokeLinecap="round" />
     {[[120, 96], [200, 70], [280, 48], [360, 30]].map(([x, y], i) => (
-      <g key={i}><circle cx={x} cy={y} r="4" fill="#050506" stroke="#D8F244" strokeWidth="2" /><text x={x + 8} y={y - 8} fill="#22C55E" fontFamily="JetBrains Mono" fontSize="10">+{(i + 1) * 1.2}R</text></g>
+      <g key={i}><circle cx={x} cy={y} r="4" fill="#0B0A14" stroke="#D8F244" strokeWidth="2" /><text x={x + 8} y={y - 8} fill="#22C55E" fontFamily="JetBrains Mono" fontSize="10">+{(i + 1) * 1.2}R</text></g>
     ))}
   </svg>
 );
@@ -29,7 +29,7 @@ const ChartArt = () => (
 const TelegramArt = () => (
   <div className="absolute right-5 bottom-5 hidden md:flex flex-col gap-2 w-56" aria-hidden>
     {["GOLD BUY · 2342.5", "SL 2336.8 · TP 2351.2", "TP1 hit · SL to BE"].map((t, i) => (
-      <div key={t} className="rounded-xl border border-[#D4D4DE]/12 bg-[#09090C]/85 backdrop-blur-md px-3 py-2 text-[11px] font-mono text-[#D4D4DE] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)]" style={{ marginLeft: i * 10 }}>{t}</div>
+      <div key={t} className="rounded-xl border border-[#D4D4DE]/12 bg-[#100E1C]/85 backdrop-blur-md px-3 py-2 text-[11px] font-mono text-[#D4D4DE] shadow-[0_10px_30px_-18px_rgba(0,0,0,0.9)]" style={{ marginLeft: i * 10 }}>{t}</div>
     ))}
   </div>
 );

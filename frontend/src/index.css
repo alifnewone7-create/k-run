@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-    --bg: #050506;
-    --bg-2: #0A0A0E;
+    --bg: #0B0A14;
+    --bg-2: #110F1E;
     --ice: #D4D4DE;
     --ice-2: #9494A8;
     --ice-3: #55556A;
@@ -45,17 +45,46 @@ body {
     overflow-x: clip;
     background-color: var(--bg);
     background-image:
-        radial-gradient(ellipse 80% 50% at 50% -10%, rgba(124,58,237,0.13), transparent 70%),
-        radial-gradient(ellipse 60% 40% at 100% 60%, rgba(139,92,246,0.05), transparent 70%),
-        radial-gradient(ellipse 60% 40% at 0% 100%, rgba(124,58,237,0.07), transparent 70%),
-        linear-gradient(180deg, #050506 0%, #08080B 50%, #050506 100%);
+        radial-gradient(ellipse 70% 45% at 50% -8%, rgba(139,92,246,0.30), transparent 70%),
+        radial-gradient(ellipse 45% 35% at 92% 28%, rgba(216,242,68,0.07), transparent 70%),
+        radial-gradient(ellipse 55% 40% at 4% 62%, rgba(124,58,237,0.20), transparent 70%),
+        radial-gradient(ellipse 50% 35% at 88% 92%, rgba(99,102,241,0.16), transparent 70%),
+        linear-gradient(180deg, #0D0B19 0%, #0B0A14 40%, #0E0C1B 72%, #0A0912 100%);
     background-attachment: fixed;
 }
 
-::selection { background: var(--lime); color: #050506; }
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+        linear-gradient(rgba(212,212,222,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212,212,222,0.035) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 0%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #000 0%, transparent 100%);
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.14;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+#root { position: relative; z-index: 1; }
+
+::selection { background: var(--lime); color: #0B0A14; }
 
 ::-webkit-scrollbar { width: 9px; }
-::-webkit-scrollbar-track { background: #050506; }
+::-webkit-scrollbar-track { background: #0B0A14; }
 ::-webkit-scrollbar-thumb {
     border-radius: 999px;
     background: linear-gradient(180deg, rgba(212,212,222, 0.4), rgba(139,92,246, 0.35));

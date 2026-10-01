@@ -60,3 +60,6 @@ User choices: nav hides on scroll-down / shows on scroll-up; keep dark+violet+li
 
 ## 2026-06 Update: Overlay hover-reveal (reference style)
 - BenefitCards: centered single-line names (LIVE SESSION / LIVE LESSON / LIVE GUIDELINE), card floats OVER the text (pointer-events none), follows cursor with spring on desktop (>=640px & hover:hover), rests right-of-center otherwise. Mobile: tap selects, card fixed over right half of text. Default = Session.
+
+## 2026-06 — Background redesign
+- Replaced pure black (#050506) site background with deep indigo/charcoal (#0B0A14) + violet/lime/indigo ambient radial glows (fixed), subtle 64px grid (masked) and soft-light grain overlay via body::before/::after. Updated hardcoded #050506 fills (Results/Learn SVG dots, scrollbar, selection) and Nav/Learn surface tints to match.

@@ -34,7 +34,7 @@ export const Results = () => {
                 {[0, 1, 2, 3].map((i) => <line key={i} x1="0" x2={w} y1={20 + i * ((h - 40) / 3)} y2={20 + i * ((h - 40) / 3)} stroke="#D4D4DE" strokeOpacity="0.08" />)}
                 <motion.path d={`${d} L${w} ${h} L0 ${h}Z`} fill="url(#eq)" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.6 }} />
                 <motion.path d={d} fill="none" stroke="url(#eqline)" strokeWidth="2.5" strokeLinecap="round" initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.8, ease: "easeInOut" }} />
-                <motion.circle cx={pts.at(-1)[0]} cy={pts.at(-1)[1]} r="6" fill="#050506" stroke="#22C55E" strokeWidth="2.5" initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.7 }} />
+                <motion.circle cx={pts.at(-1)[0]} cy={pts.at(-1)[1]} r="6" fill="#0B0A14" stroke="#22C55E" strokeWidth="2.5" initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true }} transition={{ delay: 1.7 }} />
               </svg>
             </div>
           </Reveal>
