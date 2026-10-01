@@ -1,0 +1,26 @@
+{
+  "summary": "Frontend-only regression for KM Nishat 99 static landing page after gradient/glass/icon design refactor. Validated all data-testid elements at 1920x1080 and 390x844: nav (logo, links, mobile toggle, mobile menu, body scroll lock, close-on-link), Hero (all three headline lines fully visible with text-grad, both CTAs), SignalCard (9 candles svg groups + 4 price rows), StatsStrip (all 4 stat cards, count-up animates from 0 -> 12,500+/88%/1:3+/365 when scrolled into view), Learn 0-5, Mentor principles 0-2, Results equity curve + trade rows 0-5, Testimonials 0-5, FAQ accordion (trigger 0 expands content 0), Final CTA, Footer. Verified Telegram CTAs (nav-telegram-btn, hero-telegram-btn, learn-telegram-link, faq-telegram-btn, cta-telegram-btn, footer-telegram-link) all have href=https://t.me/kmnishat9 and target=_blank. Zero console errors. Both bugs from the previous fix pass (hero gradient text is visible on all three lines; candles render). Found and fixed one real mobile bug: horizontal pan possible at 390px viewport.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "index.css / global layout", "issue": "At 390px viewport user could horizontally pan the page (window.scrollX reached 128 after scrollTo(500,0)). Root cause: body had overflow-x:hidden but the <html> element (which is the actual scroll container) had overflow-x:visible; the marquee track (~3384px wide) and negatively-positioned glow-orb decorations extended past the viewport. FIXED in this iteration by adding `html { overflow-x: hidden }` and switching body to `overflow-x: clip`. Verified fix: scrollX stays 0 and htmlScrollWidth == clientWidth (390).", "selector": "html, body", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Marquee track legitimately overflows viewport (~3384px) and needs a clipping ancestor. Current fix (html overflow-x:hidden + body overflow-x:clip) is correct; keep an eye on it if marquee container changes.",
+    "Multiple large `.glow-orb` decorations use negative positioning (-left-40, -right-40) — these will always add to scrollWidth on small screens, again relying on the ancestor clip. Consider wrapping decorative overlays in a `overflow-hidden` container instead of relying on body.",
+    "SignalCard candles use 9 <g> groups with 2 shapes each — matches expected 9 candles. Fine.",
+    "No data-testid missing among the requested list; all 40+ ids resolved."
+  ],
+  "updated_files": ["/app/frontend/src/index.css"],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None (static site, no APIs).",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Static landing page only, no backend. Use REACT_APP_BACKEND_URL from frontend/.env. Note: Lenis smooth scroll is active — programmatic window.scrollTo works for state checks but wheel events are intercepted; prefer clicking nav/mobile links to trigger section scroll. Stats counters only animate when the stats-section is in viewport (framer motion useInView) — scroll into view before asserting values. Horizontal overflow bug fixed in index.css (html overflow-x:hidden + body overflow-x:clip); keep this guard when adding new marquees/orbs.",
+  "rca of the issue": "Mobile horizontal scroll bug: Marquee (width ~3384px) and negatively-positioned .glow-orb decorations exceeded 390px viewport. body had `overflow-x:hidden` but html was `overflow-x:visible`, so the html/viewport scroll container still scrolled. Reproduced by setting viewport 390x844 then window.scrollTo(500,0) -> scrollX became 128. Mitigation applied: added `html { overflow-x: hidden }` and changed body to `overflow-x: clip` in /app/frontend/src/index.css. Post-fix scrollX stays 0."
+}

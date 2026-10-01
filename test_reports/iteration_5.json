@@ -1,0 +1,45 @@
+{
+  "summary": "Frontend-only e2e verification of nav hide/show scroll behaviour, mobile menu, section rendering, no horizontal overflow, learn-card-0 chart overlap, FAQ accordion, and reviews showcase on KM Nishat 99 landing page. All acceptance criteria pass at desktop 1920x800/1080 and mobile 390x844 with 0 console errors.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_verifications": {
+    "nav_desktop_1920x800": {
+      "initial_hidden": "false (top=0, bottom=74)",
+      "after_scroll_to_1500": "data-hidden=true, bottom=-6.4 (off-screen)",
+      "after_scroll_up_to_1000": "data-hidden=false, top=~0, visible"
+    },
+    "nav_mobile_390x844": {
+      "initial_hidden": "false (top=0, bottom=64)",
+      "after_scroll_to_1500": "data-hidden=true, bottom=-5.6 (off-screen)",
+      "after_scroll_up_to_1000": "data-hidden=false, visible"
+    },
+    "mobile_menu": {
+      "opens_on_toggle": true,
+      "nav_stays_visible_while_menu_open (data-hidden=false)": true,
+      "click_nav-mobile-link-learn_closes_menu": true,
+      "scrolls_to_#learn (top ~ -0.4)": true
+    },
+    "desktop_nav_link_results_scrolls_to_section": "results top ~ 77 after click (OK)",
+    "sections_render_desktop": ["hero-section","benefits-section","reviews-section","learn-section","results-section","marquee-section","testimonials-section","faq-section","cta-section","site-footer - all OK"],
+    "sections_render_mobile": "all OK",
+    "horizontal_overflow": {"desktop_1920": false, "mobile_390": false},
+    "learn_card_0_mobile_no_overlap": "pBottom=570.3 < chartSvgTop=586.3 (OK, 16px gap)",
+    "faq_trigger_0_opens": "data-state=open after click",
+    "reviews_showcase_btn_opens_gallery": true,
+    "lightbox_escape_close": "regression check OK",
+    "console_errors": 0
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Nav.jsx: initial hidden check uses `data-hidden` string 'false'/'true' — works, but could bind as boolean via useState directly reflected in JSX; low priority.",
+    "Nav.jsx: scroll listener does not add resize/orientationchange handler; if viewport height changes (e.g. mobile URL bar), the active section calculation uses stale window.innerHeight from last scroll — acceptable but note.",
+    "Learn.jsx: mobile chart card uses pb-40 (160px) and h-36 svg (144px); passes with a 16px gap. If body text grows longer in a future edit, overlap risk increases — consider using flex layout with reserved chart region instead of absolute + padding hack."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Nav hide/show implemented via scroll delta (>6px threshold) with data-hidden attribute and framer-motion y:-110% translate. When mobile menu is open, hidden state is suppressed (data-hidden=false && !open). All 10 sections render without horizontal overflow. Note: when checking learn-card-0 chart overlap, the card contains 2 SVGs (IconTile 16x16 + chart); always target the last svg or filter by class 'absolute inset-x-0 bottom-0'. Lenis smooth scroll is disabled on mobile as documented — use window.scrollTo with waits."
+}
