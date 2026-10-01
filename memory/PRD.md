@@ -78,5 +78,5 @@ User choices: nav hides on scroll-down / shows on scroll-up; keep dark+violet+li
 - Verified via screenshots at 1920 and 390 (hero, learn, testimonials, benefits).
 
 ## 2026-06 — Mobile smoothness pass (BenefitCards + ReviewCarousel)
-- ReviewCarousel: on mobile (IS_MOBILE) the continuous RAF auto-spin is replaced by a step glide every 3.2s; CSS disables `.car-float` animation/perspective, 3D tilt and `.car-sheen`. Drag/tap still works.
+- ReviewCarousel: continuous auto-spin + float animation KEPT on mobile (user asked "ager moto"); only the mouse-only 3D tilt and sheen layer are disabled on mobile.
 - BenefitCards: mobile auto-rotate 2.8s; CSS (<640px) removes `.wcard-num` drop-shadow filter, `.wcard-icon/.wcard-chip` backdrop-filter, ring/star infinite animations, lighter orb shadow.

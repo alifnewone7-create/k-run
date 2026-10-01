@@ -648,8 +648,7 @@ body::after {
     .glass::before { display: none; }
     .glow-orb { filter: blur(60px); opacity: 0.7; }
     .marquee-track { will-change: transform; }
-    .car-float { animation: none; perspective: none; }
-    .car-card { transform-style: flat; transform: none !important; box-shadow: 0 10px 24px -12px rgba(0,0,0,0.6) !important; }
+    .car-card { transform-style: flat; transform: none !important; }
     .car-sheen { display: none; }
 }
 
