@@ -25,7 +25,10 @@ const Phone = () => (
         </div>
         <img src="/live-call.png" alt="KM Nishat 99 live call participants" data-testid="benefits-phone-image" className="w-full object-cover" loading="lazy" />
         <div className="mt-auto flex items-center gap-2 px-4 py-3 bg-black/30">
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-[#D8F244] text-black"><Mic size={13} /></span>
+          <span data-testid="benefits-mic-icon" className="relative grid h-7 w-7 place-items-center">
+            <span className="absolute inset-0 rounded-full bg-[#D8F244]/60 animate-ping" aria-hidden />
+            <span className="relative grid h-7 w-7 place-items-center rounded-full bg-[#D8F244] text-black animate-pulse"><Mic size={13} /></span>
+          </span>
           <span className="text-[11px] text-white/80">KM NISHAT is speaking…</span>
         </div>
       </div>
