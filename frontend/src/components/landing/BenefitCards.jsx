@@ -64,7 +64,7 @@ const LessonCard = () => (
   </Card>
 );
 
-const RULES = ["Wait for confirmation", "Stop loss before entry", "Max 2 trades a day"];
+const RULES = ["Wait for confirmation", "Entry understanding", "Proper guideline"];
 const GuidelineCard = () => (
   <Card tone="blue" icon={ListChecks} title="Guideline" chip={Target} chipText="Discipline" caption="Plan · Patience · Process">
     <div className="text-center"><Stat value="No FOMO" label="Rules over emotions" className="text-5xl" /></div>
