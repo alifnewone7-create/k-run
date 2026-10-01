@@ -16,20 +16,13 @@ export const Reveal = ({ children, delay = 0, y = 28, className = "", ...rest })
   </motion.div>
 );
 
-export const LineReveal = ({ lines, className = "", lineClassName = "", delay = 0, as = "h1" }) => {
-  const Tag = motion[as];
+export const LineReveal = ({ lines, className = "", lineClassName = "", as = "h1" }) => {
+  const Tag = as;
   return (
     <Tag className={className}>
       {lines.map((line, i) => (
         <span key={i} className="block overflow-hidden pb-[0.08em]">
-          <motion.span
-            className={`block ${lineClassName}`}
-            initial={{ y: "110%", rotate: 2 }}
-            animate={{ y: 0, rotate: 0 }}
-            transition={{ duration: 1.1, delay: delay + i * 0.12, ease }}
-          >
-            {line}
-          </motion.span>
+          <span className={`block ${lineClassName}`}>{line}</span>
         </span>
       ))}
     </Tag>

@@ -50,7 +50,7 @@ export const Nav = () => {
     <motion.header
       data-testid="site-nav"
       data-hidden={hidden && !open}
-      initial={{ y: -40, opacity: 0 }}
+      initial={false}
       animate={{ y: hidden && !open ? "-110%" : 0, opacity: 1 }}
       transition={{ duration: hidden ? 0.45 : 0.55, ease }}
       className="fixed top-0 inset-x-0 z-50"

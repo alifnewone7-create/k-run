@@ -25,23 +25,20 @@ export const Hero = () => {
         <div className="relative flex flex-col items-center text-center max-w-6xl">
           <LineReveal
             as="h1"
-            delay={0.45}
             className="font-display text-[2.2rem] leading-[1.08] sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-[4.5rem] font-bold tracking-[-0.03em] text-[#FFFFFF]"
             lineClassName="[text-wrap:balance]"
             lines={["Start your trading journey.", "Become profitable", <>with <span className="text-lime">discipline.</span></>]}
           />
 
-          <motion.p initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.95, ease }}
-            className="mt-7 max-w-2xl text-sm sm:text-base md:text-lg text-[#9494A8] leading-relaxed">
+          <p className="mt-7 max-w-2xl text-sm sm:text-base md:text-lg text-[#9494A8] leading-relaxed">
             KM Nishat 99 teaches smart price-action strategies, strict risk management and the trader psychology that actually keeps accounts alive. No hype. No gambling. Just process.
-          </motion.p>
+          </p>
 
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 1.1, ease }}
-            className="relative mt-16 sm:mt-10 flex justify-center w-full sm:w-auto">
+          <div className="relative mt-16 sm:mt-10 flex justify-center w-full sm:w-auto">
             <ClickArrow variant="down" testId="hero-click-arrow-mobile" className="sm:hidden left-4 -top-[46px] h-12 w-24" />
             <ClickArrow className="hidden sm:block right-full mr-3 top-1/2 -mt-[31px] h-14 w-28" />
             <TelegramButton testId="hero-telegram-btn" className="btn-shake sm:!w-auto">Join Free Telegram Channel</TelegramButton>
-          </motion.div>
+          </div>
         </div>
 
       </div>
