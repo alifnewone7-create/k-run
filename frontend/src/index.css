@@ -346,6 +346,17 @@ body {
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 18px 40px -14px rgba(139,92,246, 0.7);
 }
 .btn-ice:active { transform: translateY(0) scale(0.985); }
+@keyframes btn-shake {
+    0%, 76%, 100% { transform: translateX(0) rotate(0); }
+    79% { transform: translateX(-5px) rotate(-2deg); }
+    82% { transform: translateX(5px) rotate(2deg); }
+    85% { transform: translateX(-4px) rotate(-1.5deg); }
+    88% { transform: translateX(4px) rotate(1.5deg); }
+    91% { transform: translateX(-2px) rotate(-0.5deg); }
+    94% { transform: translateX(2px) rotate(0.5deg); }
+}
+.btn-shake { animation: btn-shake 3s ease-in-out infinite; }
+.btn-shake:hover { animation-play-state: paused; }
 
 .btn-lime {
     display: inline-flex;
