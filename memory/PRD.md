@@ -63,3 +63,8 @@ User choices: nav hides on scroll-down / shows on scroll-up; keep dark+violet+li
 
 ## 2026-06 — Background redesign
 - Replaced pure black (#050506) site background with deep indigo/charcoal (#0B0A14) + violet/lime/indigo ambient radial glows (fixed), subtle 64px grid (masked) and soft-light grain overlay via body::before/::after. Updated hardcoded #050506 fills (Results/Learn SVG dots, scrollbar, selection) and Nav/Learn surface tints to match.
+
+## 2026-06 — "Deep Cosmos" Aura background (user-supplied colour grading)
+- New `/app/frontend/src/components/landing/AuraBackground.jsx` mounted in App.js above LandingPage; 4 fixed full-page layers (`.aura-bg` + `.aura-layer-1..4` in index.css).
+- body/html base colour now `#100e0b`; removed old body radial-mesh background-image. Layer 1 = violet linear gradient (alphas tempered to 0.34/0.46 for text contrast), layers 2-3 = screen-blend radial glows (blur 120px mobile / 260px desktop), layer 4 = screen-blend star dots.
+- Content kept above via `.App > *:not(.aura-bg) { z-index: 1 }`. Verified by screenshots at top/mid/footer — readable, no overflow.
