@@ -1,30 +1,31 @@
+import { useId } from "react";
 import { motion } from "framer-motion";
 
 const ease = [0.22, 1, 0.36, 1];
-const stroke = { stroke: "currentColor", strokeWidth: 2.4, strokeLinecap: "round", fill: "none" };
+const view = { once: true, margin: "-60px" };
 
-const draw = (delay, duration) => ({
-  initial: { pathLength: 0, opacity: 0 },
-  whileInView: { pathLength: 1, opacity: 1 },
-  viewport: { once: true, margin: "-60px" },
-  transition: { pathLength: { duration, delay, ease }, opacity: { duration: 0.25, delay } },
-});
-
-export const DrawUnderline = ({ className = "", testId = "draw-underline" }) => (
-  <div aria-hidden data-testid={testId} className={`pointer-events-none ${className}`}>
-    <svg viewBox="0 0 220 26" fill="none" className="h-full w-full overflow-visible text-[#D8F244]">
-      <motion.path
-        d="M4 16 C 34 6, 66 6, 96 12 C 126 18, 158 19, 206 9"
-        {...stroke}
-        {...draw(0.28, 1.15)}
-      />
-      <motion.path
-        d="M16 22 C 48 15, 84 15, 118 19 C 150 22.5, 176 21, 198 16"
-        {...stroke}
-        strokeWidth={1.4}
-        opacity={0.5}
-        {...draw(0.62, 0.95)}
-      />
-    </svg>
-  </div>
-);
+export const DrawUnderline = ({ className = "", testId = "draw-underline" }) => {
+  const id = useId().replace(/:/g, "");
+  return (
+    <div aria-hidden data-testid={testId} className={`pointer-events-none ${className}`}>
+      <svg viewBox="0 0 240 20" fill="none" className="h-full w-full overflow-visible">
+        <defs>
+          <linearGradient id={`ug-${id}`} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="#2F5BD9" />
+            <stop offset="55%" stopColor="#4F8CF7" />
+            <stop offset="100%" stopColor="#A5CBFF" />
+          </linearGradient>
+          <clipPath id={`uc-${id}`}>
+            <motion.rect x="0" y="0" height="20" initial={{ width: 0 }} whileInView={{ width: 240 }} viewport={view} transition={{ duration: 1.1, delay: 0.28, ease }} />
+          </clipPath>
+        </defs>
+        <g clipPath={`url(#uc-${id})`} fill={`url(#ug-${id})`}>
+          <path d="M4 11.8 C 60 4.6, 140 3, 204 6 L 204 7.8 C 140 6, 62 9.6, 6 16.4 Q 0.8 14.4 4 11.8 Z" />
+          <path d="M188 9.6 L 214 10 L 214 11.2 L 188 11 Z" opacity="0.8" />
+        </g>
+        <motion.circle cx="230" cy="10.4" r="2.2" fill="#60A5FA" initial={{ scale: 0, opacity: 0 }} whileInView={{ scale: 1, opacity: 1 }}
+          viewport={view} transition={{ duration: 0.35, delay: 1.25, ease }} style={{ transformOrigin: "230px 10.4px" }} />
+      </svg>
+    </div>
+  );
+};
