@@ -6,8 +6,12 @@ import { BenefitCards } from "./BenefitCards";
 const Phone = () => (
   <div className="phone-float relative mx-auto w-[250px] sm:w-[280px]" data-testid="benefits-phone">
     <div className="absolute -inset-10 rounded-full bg-[#7C3AED]/[0.16] blur-[70px]" aria-hidden />
-    <div className="relative rounded-[2.6rem] p-[9px] bg-gradient-to-b from-[#231E33] via-[#14121C] to-[#0B0A10] border border-[#8B5CF6]/25 shadow-[0_40px_90px_-30px_rgba(124,58,237,0.45)]">
-      <div className="relative overflow-hidden rounded-[2.1rem] bg-[#262626] aspect-[9/19] flex flex-col">
+    <span className="absolute -left-[3px] top-24 h-10 w-[3px] rounded-l-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
+    <span className="absolute -left-[3px] top-36 h-14 w-[3px] rounded-l-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
+    <span className="absolute -right-[3px] top-32 h-16 w-[3px] rounded-r-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
+    <div className="relative rounded-[2.75rem] p-[2px] bg-gradient-to-br from-[#C4B5FD] via-[#7C3AED] to-[#D8F244]/70 shadow-[0_40px_90px_-30px_rgba(124,58,237,0.55),0_0_0_1px_rgba(255,255,255,0.04)]">
+    <div className="relative rounded-[2.65rem] p-[8px] bg-gradient-to-b from-[#1E1A2B] via-[#111018] to-[#09080D] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(255,255,255,0.05)]">
+      <div className="relative overflow-hidden rounded-[2.1rem] bg-[#262626] aspect-[9/19] flex flex-col ring-1 ring-black/60">
         <div className="relative flex items-center justify-between px-6 pt-3 pb-2 text-[11px] font-semibold text-white">
           <span>9:41</span>
           <span className="absolute left-1/2 top-2 h-5 w-20 -translate-x-1/2 rounded-full bg-black" />
@@ -25,6 +29,7 @@ const Phone = () => (
           <span className="text-[11px] text-white/80">KM NISHAT is speaking…</span>
         </div>
       </div>
+    </div>
     </div>
   </div>
 );
