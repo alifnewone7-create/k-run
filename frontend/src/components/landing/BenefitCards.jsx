@@ -41,31 +41,39 @@ const SessionCard = () => (
   </Card>
 );
 
-const WAVES = ["M0 50 C 40 20, 70 20, 110 50 S 180 80, 220 50 S 290 20, 320 50", "M0 60 C 45 40, 75 40, 115 60 S 185 85, 225 60 S 295 40, 320 60", "M0 42 C 50 70, 80 70, 120 42 S 190 10, 230 42 S 300 70, 320 42"];
+const CANDLES = [[18, 80, 64, 86, 58], [46, 66, 74, 80, 60], [74, 72, 52, 76, 46], [102, 54, 40, 58, 34], [130, 42, 52, 58, 38], [158, 50, 30, 54, 24], [186, 32, 18, 36, 12], [214, 20, 8, 24, 4]];
 const LessonCard = () => (
   <Card tone="teal" icon={BookOpenCheck} title="Lesson" chip={GraduationCap} chipText="Beginner friendly" caption="Price action · Risk · Psychology">
     <div className="text-center"><Stat value="A → Z" label="Structured curriculum" className="text-6xl" /></div>
-    <svg viewBox="0 0 320 90" className="mt-6 w-full max-w-[260px]" fill="none" strokeLinecap="round">
-      {WAVES.map((d, k) => (
-        <motion.path key={k} d={d} stroke="#fff" strokeOpacity={0.85 - k * 0.3} strokeWidth={k === 0 ? 2 : 1.4}
-          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.3 + k * 0.2, ease }} />
-      ))}
+    <svg viewBox="0 0 232 90" className="mt-5 w-full max-w-[250px]" data-testid="lesson-candles">
+      <motion.path d="M18 64 L46 74 L74 52 L102 40 L130 52 L158 30 L186 18 L214 8" fill="none" stroke="#fff" strokeOpacity="0.35" strokeWidth="1.2" strokeDasharray="3 4"
+        initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.9, ease }} />
+      {CANDLES.map(([x, o, c, h, l], k) => {
+        const up = c < o;
+        return (
+          <motion.g key={k} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 + k * 0.1, ease }}>
+            <line x1={x} x2={x} y1={h} y2={l} stroke={up ? "#A7F3D0" : "#FDA4AF"} strokeWidth="1.4" />
+            <rect x={x - 7} y={Math.min(o, c)} width="14" height={Math.max(Math.abs(o - c), 2)} rx="2" fill={up ? "#6EE7B7" : "#FB7185"} />
+          </motion.g>
+        );
+      })}
     </svg>
   </Card>
 );
 
-const BARS = [28, 46, 40, 92, 62, 34, 24];
 const GuidelineCard = () => (
   <Card tone="blue" icon={Compass} title="Guideline" chip={Target} chipText="Discipline" caption="Risk 1% · Follow the plan">
     <div className="text-center"><Stat value="1:3 RR" label="Minimum risk : reward" className="text-6xl" /></div>
-    <div className="mt-6 grid grid-cols-7 gap-2 w-full max-w-[240px] items-end h-20">
-      {BARS.map((h, k) => (
-        <div key={k} className="flex flex-col items-center gap-1.5 h-full justify-end">
-          <motion.div className={`w-bar ${k === 3 ? "on" : ""}`} style={{ height: `${h}%` }}
-            initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 + k * 0.08, ease }} />
-          <span className={`text-[10px] ${k === 3 ? "text-white" : "text-white/45"}`}>{"MTWTFSS"[k]}</span>
-        </div>
-      ))}
+    <div className="relative mt-6 w-full max-w-[250px] h-24 flex flex-col rounded-xl overflow-hidden border border-white/20" data-testid="guideline-rr-box">
+      <motion.div className="flex-[3] flex items-start justify-end px-2.5 pt-1.5 bg-gradient-to-b from-emerald-300/45 to-emerald-400/15 text-[10px] font-semibold text-emerald-50"
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.3 }}>TP +3R</motion.div>
+      <div className="relative h-[2px] bg-white"><span className="absolute right-2 -top-[7px] rounded bg-white px-1.5 text-[9px] font-bold text-[#0B3F9E]">ENTRY</span></div>
+      <motion.div className="flex-1 flex items-end justify-end px-2.5 pb-1 bg-gradient-to-b from-rose-400/15 to-rose-400/45 text-[10px] font-semibold text-rose-50"
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.5 }}>SL −1R</motion.div>
+      <svg viewBox="0 0 250 96" preserveAspectRatio="none" className="absolute inset-0 h-full w-full" fill="none">
+        <motion.path d="M6 72 L40 78 L70 66 L100 74 L130 50 L160 56 L190 30 L222 8" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+          initial={{ pathLength: 0 }} whileInView={{ pathLength: 1 }} viewport={{ once: true }} transition={{ duration: 1.6, delay: 0.6, ease }} />
+      </svg>
     </div>
   </Card>
 );
