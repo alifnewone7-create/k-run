@@ -9,7 +9,7 @@ const Phone = () => (
     <span className="absolute -left-[3px] top-24 h-10 w-[3px] rounded-l-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
     <span className="absolute -left-[3px] top-36 h-14 w-[3px] rounded-l-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
     <span className="absolute -right-[3px] top-32 h-16 w-[3px] rounded-r-md bg-gradient-to-b from-[#A78BFA] to-[#5B21B6]" aria-hidden />
-    <div className="relative rounded-[2.75rem] p-[2px] bg-gradient-to-br from-[#C4B5FD] via-[#7C3AED] to-[#D8F244]/70 shadow-[0_40px_90px_-30px_rgba(124,58,237,0.55),0_0_0_1px_rgba(255,255,255,0.04)]">
+    <div className="relative rounded-[2.75rem] p-[2px] bg-gradient-to-br from-[#C4B5FD] via-[#8B5CF6] to-[#6D28D9] shadow-[0_40px_90px_-30px_rgba(124,58,237,0.55),0_0_0_1px_rgba(255,255,255,0.04)]">
     <div className="relative rounded-[2.65rem] p-[8px] bg-gradient-to-b from-[#1E1A2B] via-[#111018] to-[#09080D] shadow-[inset_0_1px_0_rgba(255,255,255,0.12),inset_0_0_0_1px_rgba(255,255,255,0.05)]">
       <div className="relative overflow-hidden rounded-[2.1rem] bg-[#262626] aspect-[9/19] flex flex-col ring-1 ring-black/60">
         <div className="relative flex items-center justify-between px-6 pt-3 pb-2 text-[11px] font-semibold text-white">
