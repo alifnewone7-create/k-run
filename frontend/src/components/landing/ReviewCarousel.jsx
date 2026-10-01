@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { RING } from "@/lib/reviews";
+import { IS_MOBILE } from "@/hooks/useLenis";
 
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const mix = (a, b, t) => a + (b - a) * t;
@@ -102,6 +103,10 @@ export function ReviewCarousel({ onOpen, spin = 42 }) {
 
   useEffect(() => {
     if (!spin || still || held) return;
+    if (IS_MOBILE) {
+      const id = setInterval(() => glideRef.current(Math.round(turn.current) + 1), 3200);
+      return () => clearInterval(id);
+    }
     let id = 0;
     let prev = 0;
     const step = (t) => {
@@ -114,6 +119,7 @@ export function ReviewCarousel({ onOpen, spin = 42 }) {
     return () => cancelAnimationFrame(id);
   }, [spin, still, held, paint]);
 
+  const glideRef = useRef(() => {});
   const glide = (to) => {
     cancelAnimationFrame(raf.current);
     const from = turn.current;
@@ -128,6 +134,7 @@ export function ReviewCarousel({ onOpen, spin = 42 }) {
     };
     raf.current = requestAnimationFrame(tick);
   };
+  glideRef.current = glide;
 
   const go = (d) => glide(Math.round(turn.current) + d);
 

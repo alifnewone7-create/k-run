@@ -207,6 +207,12 @@ body::after {
     .wcard { transition: none; box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), inset 0 0 0 1px rgba(255,255,255,0.06); }
     .wcard::before { display: none; }
     .wcard-grid { display: none; }
+    .wcard-num { filter: none; }
+    .wcard-icon, .wcard-chip { backdrop-filter: none; -webkit-backdrop-filter: none; }
+    .w-orb { box-shadow: 0 20px 40px -18px rgba(24,6,60,0.8); }
+    .w-ring { animation: none; opacity: 0.35; transform: scale(1.25); }
+    .w-ring.d2 { transform: scale(1.5); opacity: 0.18; }
+    .w-star { animation: none; }
     [data-testid="benefit-preview"] { box-shadow: 0 20px 40px -24px rgba(0,0,0,0.8); }
 }
 .wcard-violet { --w-hi: #B07CFF; --w-mid: #5B21B6; --w-deep: #2A0F5C; --w-glow: #8B5CF6; --w-shadow: rgba(139,92,246,0.7); }
@@ -642,6 +648,9 @@ body::after {
     .glass::before { display: none; }
     .glow-orb { filter: blur(60px); opacity: 0.7; }
     .marquee-track { will-change: transform; }
+    .car-float { animation: none; perspective: none; }
+    .car-card { transform-style: flat; transform: none !important; box-shadow: 0 10px 24px -12px rgba(0,0,0,0.6) !important; }
+    .car-sheen { display: none; }
 }
 
 @media (hover: none) {

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
+import { IS_MOBILE } from "@/hooks/useLenis";
 import { Video, Presentation, ListChecks, ShieldCheck, Brain, Radio, GraduationCap, Target, Wallet, Sparkles, BarChart3, CandlestickChart, Check } from "lucide-react";
 
 const ease = [0.22, 1, 0.36, 1];
@@ -170,7 +171,7 @@ export const BenefitCards = () => {
 
   useEffect(() => {
     if (hovered !== null) return;
-    const id = setInterval(() => setSelected((s) => (s + 1) % ITEMS.length), 2000);
+    const id = setInterval(() => setSelected((s) => (s + 1) % ITEMS.length), IS_MOBILE ? 2800 : 2000);
     return () => clearInterval(id);
   }, [hovered, selected]);
 
