@@ -9,13 +9,16 @@ const STARS = [[12, 18], [28, 62], [70, 22], [86, 48], [58, 80], [40, 36], [78, 
 const Card = ({ tone, icon: Icon, title, chip: ChipIcon, chipText, caption, children }) => (
   <div className={`wcard wcard-${tone} h-full w-full flex flex-col p-6 sm:p-7`}>
     <span className="wcard-grid" aria-hidden />
-    <div className="flex items-start justify-between">
-      <span className="wcard-icon"><Icon size={22} strokeWidth={1.8} /></span>
-      <span className="wcard-chip"><ChipIcon size={11} strokeWidth={2.2} />{chipText}</span>
-    </div>
-    <div className="mt-4">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/55">Live</p>
-      <p className="text-[22px] font-semibold text-white leading-tight tracking-[-0.02em]">{title}</p>
+    <div className="flex items-start justify-between gap-2">
+      <div className="flex items-center gap-3" data-testid={`wcard-head-${tone}`}>
+        <span className="wcard-icon shrink-0"><Icon size={22} strokeWidth={1.8} /></span>
+        <div className="leading-tight">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-white/60">Live</p>
+          <span className="my-1 block h-px w-full min-w-[3.5rem] bg-gradient-to-r from-white/70 to-white/10" aria-hidden />
+          <p className="text-[17px] font-semibold text-white tracking-[-0.02em]">{title}</p>
+        </div>
+      </div>
+      <span className="wcard-chip shrink-0"><ChipIcon size={11} strokeWidth={2.2} />{chipText}</span>
     </div>
     <div className="relative flex-1 flex flex-col items-center justify-center py-3">{children}</div>
     <div className="wcard-foot"><p className="text-[13px] text-white/85 pr-16">{caption}</p></div>
