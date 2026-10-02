@@ -112,7 +112,7 @@ body::after {
     -webkit-text-fill-color: transparent;
 }
 .text-grad-accent {
-    background: linear-gradient(96deg, #0D1B33 0%, #13325C 20%, #1D4ED8 55%, #B97A00 95%, #A86E00 100%);
+    background: linear-gradient(96deg, #0D1B33 0%, #13325C 18%, #1D4ED8 55%, #5B9BF8 88%, #8FC0FF 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
