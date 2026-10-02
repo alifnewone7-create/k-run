@@ -16,9 +16,9 @@ const COINS = [
 ];
 
 const TONES = {
-  lime: "text-[#D8F244] border-[#D8F244]/40 bg-[#D8F244]/[0.06]",
-  violet: "text-[#A78BFA] border-[#8B5CF6]/45 bg-[#7C3AED]/[0.08]",
-  white: "text-white border-white/25 bg-white/[0.04]",
+  lime: "text-[#E09400] border-[#FFB300]/60 bg-[#FFB300]/[0.10]",
+  violet: "text-[#2563EB] border-[#3B82F6]/45 bg-[#3B82F6]/[0.08]",
+  white: "text-[#0D1B33]/70 border-[#0D1B33]/20 bg-[#0D1B33]/[0.04]",
 };
 
 export const CryptoBg = () => (

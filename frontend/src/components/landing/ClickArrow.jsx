@@ -18,7 +18,7 @@ export const ClickArrow = ({ className = "", variant = "side", testId = "hero-cl
     data-testid={testId}
     className={`pointer-events-none absolute ${className}`}
   >
-    <svg viewBox="0 0 100 50" fill="none" className="h-full w-full overflow-visible text-[#D8F244]">
+    <svg viewBox="0 0 100 50" fill="none" className="h-full w-full overflow-visible text-[#D98C00]">
       <motion.path
         d={PATHS[variant][0]}
         {...stroke}

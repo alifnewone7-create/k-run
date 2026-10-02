@@ -6,7 +6,7 @@ import { lockScroll } from "@/hooks/useLenis";
 
 const IconBtn = ({ onClick, testId, label, className = "", children }) => (
   <button onClick={onClick} data-testid={testId} aria-label={label}
-    className={`grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-gradient-to-br from-[#C4B5FD] via-[#8B5CF6] to-[#3B0F7A] text-white shadow-[0_10px_30px_-8px_rgba(124,58,237,0.8)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 hover:shadow-[0_14px_40px_-8px_rgba(139,92,246,0.95)] active:scale-95 ${className}`}>
+    className={`grid h-11 w-11 place-items-center rounded-full border border-white/20 bg-gradient-to-br from-[#93C5FD] via-[#3B82F6] to-[#1E40AF] text-white shadow-[0_10px_30px_-8px_rgba(124,58,237,0.8)] transition-[transform,filter,box-shadow] duration-300 hover:scale-105 hover:brightness-110 hover:shadow-[0_14px_40px_-8px_rgba(139,92,246,0.95)] active:scale-95 ${className}`}>
     {children}
   </button>
 );
@@ -20,7 +20,7 @@ export const ReviewsGallery = ({ open, onClose, onPick }) => (
         <div className="flex items-center justify-between gap-4 px-5 sm:px-10 py-5 border-b border-white/10">
           <div>
             <p className="eyebrow">Showcase</p>
-            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">Member Reviews <span className="text-[#D8F244]">({REVIEWS.length})</span></h3>
+            <h3 className="font-display text-xl sm:text-2xl font-bold text-white">Member Reviews <span className="text-[#FFB300]">({REVIEWS.length})</span></h3>
           </div>
           <IconBtn onClick={onClose} testId="reviews-showcase-close" label="Close showcase"><X size={20} /></IconBtn>
         </div>
@@ -31,7 +31,7 @@ export const ReviewsGallery = ({ open, onClose, onPick }) => (
                 initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: Math.min(i * 0.025, 0.6) }}
                 className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/5 aspect-[591/1280]">
                 <img src={src} alt={`Member review ${i + 1}`} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
-                <span className="absolute inset-0 bg-gradient-to-t from-[#7C3AED]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <span className="absolute inset-0 bg-gradient-to-t from-[#3B82F6]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </motion.button>
             ))}
           </div>

@@ -9,7 +9,7 @@ export const Marquee = () => {
         {items.map((t, i) => (
           <span key={i} className="flex items-center gap-8 pr-8 sm:gap-10 sm:pr-10 font-display text-xl sm:text-3xl lg:text-4xl font-semibold tracking-tight whitespace-nowrap text-grad-soft">
             {t}
-            <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#D8F244]/60" />
+            <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-[#FFB300]/60" />
           </span>
         ))}
       </div>

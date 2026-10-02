@@ -25,12 +25,12 @@ export const Hero = () => {
         <div className="relative flex flex-col items-center text-center max-w-6xl">
           <LineReveal
             as="h1"
-            className="font-display text-[2.2rem] leading-[1.08] sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-[4.5rem] font-bold tracking-[-0.03em] text-[#FFFFFF]"
+            className="font-display text-[2.2rem] leading-[1.08] sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-[4.5rem] font-bold tracking-[-0.03em] text-[#0D1B33]"
             lineClassName="[text-wrap:balance]"
             lines={["Start your trading journey.", "Become profitable", <>with <span className="text-lime">discipline.</span></>]}
           />
 
-          <p className="mt-7 max-w-2xl text-sm sm:text-base md:text-lg text-[#9494A8] leading-relaxed">
+          <p className="mt-7 max-w-2xl text-sm sm:text-base md:text-lg text-[#55688A] leading-relaxed">
             KM Nishat 99 teaches smart price-action strategies, strict risk management and the trader psychology that actually keeps accounts alive. No hype. No gambling. Just process.
           </p>
 

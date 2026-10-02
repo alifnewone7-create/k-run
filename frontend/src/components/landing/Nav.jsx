@@ -60,27 +60,27 @@ export const Nav = () => {
           <div className="flex h-full items-center justify-between gap-3">
             <button onClick={() => go("hero")} data-testid="nav-logo" className="group flex items-center gap-2.5 shrink-0">
               <span className="relative">
-                <img src={LOGO} alt="KM Nishat 99 logo" className="h-8 w-8 lg:h-9 lg:w-9 rounded-full object-cover ring-1 ring-[#D4D4DE]/25 transition-transform duration-500 group-hover:scale-105" />
-                <span className="absolute inset-0 rounded-full ring-1 ring-[#D8F244]/0 group-hover:ring-[#D8F244]/40 transition-all duration-500" />
+                <img src={LOGO} alt="KM Nishat 99 logo" className="h-8 w-8 lg:h-9 lg:w-9 rounded-full object-cover ring-1 ring-[#0D1B33]/25 transition-transform duration-500 group-hover:scale-105" />
+                <span className="absolute inset-0 rounded-full ring-1 ring-[#FFB300]/0 group-hover:ring-[#FFB300]/40 transition-all duration-500" />
               </span>
               <span className="font-display font-bold tracking-tight text-[15px] lg:text-base text-grad">KM Nishat 99</span>
             </button>
 
-            <nav className="hidden lg:flex items-center gap-1 rounded-xl border border-[#D4D4DE]/10 bg-[#D4D4DE]/[0.035] px-1.5 py-1 backdrop-blur-xl">
+            <nav className="hidden lg:flex items-center gap-1 rounded-xl border border-[#0D1B33]/10 bg-[#0D1B33]/[0.035] px-1.5 py-1 backdrop-blur-xl">
               {NAV_LINKS.map((l) => (
                 <button
                   key={l.id}
                   onClick={() => go(l.id)}
                   data-testid={`nav-link-${l.id}`}
                   className={`relative rounded-lg px-3.5 py-1.5 text-[13px] transition-colors duration-300 ${
-                    active === l.id ? "text-[#FFFFFF]" : "text-[#9494A8] hover:text-[#D4D4DE]"
+                    active === l.id ? "text-[#0D1B33]" : "text-[#55688A] hover:text-[#33456B]"
                   }`}
                 >
                   {active === l.id && (
                     <motion.span
                       layoutId="nav-pill"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
-                      className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#D4D4DE]/16 to-[#D8F244]/12 border border-[#D4D4DE]/15"
+                      className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#2563EB]/16 to-[#FFB300]/12 border border-[#0D1B33]/15"
                     />
                   )}
                   <span className="relative">{l.label}</span>
@@ -99,7 +99,7 @@ export const Nav = () => {
                 data-testid="nav-mobile-toggle"
                 aria-label="Toggle menu"
                 aria-expanded={open}
-                className="grid h-9 w-9 place-items-center rounded-xl border border-[#D4D4DE]/15 bg-[#D4D4DE]/[0.06] text-[#D4D4DE] active:scale-95 transition-transform"
+                className="grid h-9 w-9 place-items-center rounded-xl border border-[#0D1B33]/15 bg-[#0D1B33]/[0.06] text-[#33456B] active:scale-95 transition-transform"
               >
                 {open ? <X size={18} /> : <Menu size={18} />}
               </button>
@@ -107,7 +107,7 @@ export const Nav = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#D4D4DE]/15 to-transparent" />
+        <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-[#0D1B33]/15 to-transparent" />
       </div>
 
       <AnimatePresence>
@@ -119,7 +119,7 @@ export const Nav = () => {
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.35, ease }}
             data-testid="nav-mobile-menu"
-            className="lg:hidden mx-3 mt-2 rounded-3xl border border-[#D4D4DE]/12 bg-[#100E1C]/95 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] overflow-hidden"
+            className="lg:hidden mx-3 mt-2 rounded-3xl border border-[#0D1B33]/12 bg-[#FFFFFF]/95 backdrop-blur-2xl shadow-[0_30px_80px_-30px_rgba(0,0,0,0.95)] overflow-hidden"
           >
             <div className="p-3">
               {NAV_LINKS.map((l, i) => (
@@ -131,11 +131,11 @@ export const Nav = () => {
                   onClick={() => go(l.id)}
                   data-testid={`nav-mobile-link-${l.id}`}
                   className={`w-full flex items-center justify-between rounded-lg px-4 py-3.5 text-[15px] transition-colors ${
-                    active === l.id ? "text-[#FFFFFF] bg-[#D4D4DE]/[0.07]" : "text-[#D4D4DE]"
+                    active === l.id ? "text-[#0D1B33] bg-[#0D1B33]/[0.07]" : "text-[#33456B]"
                   }`}
                 >
                   {l.label}
-                  <ArrowUpRight size={15} className="text-[#D8F244]/70" />
+                  <ArrowUpRight size={15} className="text-[#D98C00]/70" />
                 </motion.button>
               ))}
               <div className="px-1 pt-2 pb-1">

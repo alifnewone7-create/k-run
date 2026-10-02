@@ -33,8 +33,8 @@ export const SectionHead = ({ eyebrow, title, body, icon: Icon, align = "left" }
   <div className={`max-w-2xl ${align === "center" ? "mx-auto text-center" : ""}`}>
     <Reveal>
       <span className={`chip mb-5 ${align === "center" ? "mx-auto" : ""}`}>
-        {Icon ? <Icon size={13} className="text-[#D8F244]" /> : <span className="h-1.5 w-1.5 rounded-full bg-[#D8F244]" />}
-        <span className="font-display font-semibold uppercase tracking-normal text-[0.78rem] text-[#D4D4DE]">{eyebrow}</span>
+        {Icon ? <Icon size={13} className="text-[#D98C00]" /> : <span className="h-1.5 w-1.5 rounded-full bg-[#FFB300]" />}
+        <span className="font-display font-semibold uppercase tracking-normal text-[0.78rem] text-[#33456B]">{eyebrow}</span>
       </span>
     </Reveal>
     {title && (
@@ -44,7 +44,7 @@ export const SectionHead = ({ eyebrow, title, body, icon: Icon, align = "left" }
     )}
     {body && (
       <Reveal delay={0.16}>
-        <p className="mt-5 text-base md:text-lg text-[#9494A8] leading-relaxed">{body}</p>
+        <p className="mt-5 text-base md:text-lg text-[#55688A] leading-relaxed">{body}</p>
         <DrawUnderline className={`mt-3 h-6 w-[190px] sm:w-[220px] ${align === "center" ? "mx-auto" : ""}`} />
       </Reveal>
     )}

@@ -20,7 +20,7 @@ const Divider = ({ id }) => (
 export default function LandingPage() {
   useLenis();
   return (
-    <main data-testid="landing-page" className="relative text-[#D4D4DE]">
+    <main data-testid="landing-page" className="relative text-[#33456B]">
       <div className="grain" aria-hidden />
       <Nav />
       <Hero />

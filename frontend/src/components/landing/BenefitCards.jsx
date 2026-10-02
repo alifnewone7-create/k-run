@@ -136,8 +136,8 @@ const NameRow = ({ item, i, active, dim, onEnter, onSelect }) => (
     className="block overflow-hidden outline-none">
     <motion.span className="relative block font-display text-[2rem] sm:text-6xl lg:text-7xl font-medium tracking-[-0.04em] leading-none whitespace-pre will-change-transform"
       animate={{ y: active ? "-100%" : "0%" }} transition={slide}>
-      <span className="block transition-colors duration-300" style={{ color: dim ? "#51565A" : "#FFFFFF" }}>{item.name}</span>
-      <span aria-hidden className="block absolute top-full left-0 w-full text-white">{item.name}</span>
+      <span className="block transition-colors duration-300" style={{ color: dim ? "#B9C6DA" : "#0D1B33" }}>{item.name}</span>
+      <span aria-hidden className="block absolute top-full left-0 w-full text-[#0D1B33]">{item.name}</span>
     </motion.span>
   </button>
 );
