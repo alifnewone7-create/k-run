@@ -23,6 +23,19 @@ export const Hero = () => {
       <div className="relative mx-auto max-w-7xl px-5 sm:px-6 lg:px-8 flex flex-col items-center gap-16 lg:gap-20">
         <CryptoBg />
         <div className="relative flex flex-col items-center text-center max-w-6xl">
+          <div
+            data-testid="hero-banner"
+            className="group relative mb-10 sm:mb-14 w-full max-w-[620px] sm:max-w-3xl lg:max-w-4xl overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] border border-[#0D1B33]/10 bg-white shadow-[0_30px_70px_-34px_rgba(13,43,94,0.4)] transition-shadow duration-500 hover:shadow-[0_40px_90px_-34px_rgba(13,43,94,0.5)]"
+          >
+            <img
+              src="/hero-banner.jpg"
+              alt="KM Nishat 99 — stop trading with indiscipline, trade with discipline on our live calls"
+              data-testid="hero-banner-image"
+              className="block w-full h-auto transition-transform duration-700 group-hover:scale-[1.015]"
+            />
+            <span className="pointer-events-none absolute inset-0 rounded-[1.5rem] sm:rounded-[2rem] ring-1 ring-inset ring-white/60" aria-hidden />
+          </div>
+
           <LineReveal
             as="h1"
             className="font-display text-[2.2rem] leading-[1.08] sm:text-5xl sm:leading-[1.05] lg:text-6xl xl:text-[4.5rem] font-bold tracking-[-0.03em] text-[#0D1B33]"
